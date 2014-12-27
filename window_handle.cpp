@@ -1,3 +1,4 @@
+
 /* 
  * This file contains the functions that will handle:
  * SDL initialization, window creation, context creation, GLEW initialization, "destructor"
@@ -23,13 +24,15 @@ static const Uint32 SDL_INIT_FLAGS = SDL_INIT_VIDEO;
 static const Uint32 SDL_WINDOW_FLAGS = SDL_WINDOW_OPENGL;
 
 // Forward declared so it can be used within other functions.
+inline void initDisplay();
 static void initSDL();
 static void createWindow();
 static void createContext();
 static void initGLEW();
-void cleanSDL();
+inline void cleanSDL();
 
-void initDisplay()
+// Initialize SDL, create window, create OpenGL context and initialize GLEW.
+inline void initDisplay()
 {
 	initSDL();
 	createWindow();
@@ -112,13 +115,13 @@ static void initGLEW()
 }
 
 // Swap buffers.
-void updateDisplay()
+inline void updateDisplay()
 {
 	SDL_GL_SwapWindow(mainWindow);
 }
 
 // Clean after SDL.
-void cleanSDL()
+inline void cleanSDL()
 {
 	cout << "Cleaning..." << endl;
 	SDL_GL_DeleteContext(glContext);
