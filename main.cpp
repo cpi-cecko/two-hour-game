@@ -3,6 +3,7 @@
 // Contains basic functions for handling the display.
 #include "window_handle.cpp"
 #include "mesh.h"
+#include "shader.h"
 
 int main(int argc, char* argv[])
 {
@@ -16,6 +17,10 @@ int main(int argc, char* argv[])
 		vertex(vec3(-0.5, -0.5, 0.0))
 	};
 	mesh triangle_mesh(triangle_vertices, sizeof(triangle_vertices) / sizeof(triangle_vertices[0]));
+	
+	// Shader data.
+	shader basicShader("shaders/basic");
+	basicShader.useShader();
 	
 	// Main loop.
 	bool isRunning = true;
