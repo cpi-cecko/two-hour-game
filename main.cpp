@@ -2,11 +2,20 @@
 
 // Contains basic functions for handling the display.
 #include "window_handle.cpp"
+#include "mesh.h"
 
 int main(int argc, char* argv[])
 {
 	// Initialize SDL, create window, create OpenGL context and initialize GLEW.
 	initDisplay();
+	
+	// Mesh data.
+	vertex triangle_vertices[] = {
+		vertex(vec3(0.0, 0.5, 0.0)),
+		vertex(vec3(0.5, -0.5, 0.0)),
+		vertex(vec3(-0.5, -0.5, 0.0))
+	};
+	mesh triangle_mesh(triangle_vertices, sizeof(triangle_vertices) / sizeof(triangle_vertices[0]));
 	
 	// Main loop.
 	bool isRunning = true;
@@ -26,6 +35,7 @@ int main(int argc, char* argv[])
 		// Logic.
 		
 		// Render.
+		triangle_mesh.draw();
 		
 		// Swap buffers.
 		updateDisplay();
