@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 
+// Contains basic functions for handling the display.
 #include "window_handle.cpp"
 
 int main(int argc, char* argv[])
@@ -35,3 +36,4 @@ int main(int argc, char* argv[])
 	
 	return 0;
 }
+
